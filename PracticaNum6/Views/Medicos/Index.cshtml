@@ -1,0 +1,60 @@
+﻿@model IEnumerable<PracticaNum6.Models.Medico>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Listado de medicos</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+
+<form asp-controller="Medicos" asp-action="Index">
+    <p>
+        Buscar: <input type="text" name="buscar" class="form-text" />
+        <input type="submit" value="Buscar" class="btn btn-dark" />
+    </p>
+</form>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Nombre)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Apellido)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Especialidad)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Telefono)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nombre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Apellido)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Especialidad)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Telefono)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.IdMedico">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.IdMedico">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.IdMedico">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
